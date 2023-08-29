@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:vtudom/views/web_view_page.dart';
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case "":
-        return screenOf(screenName: Container());
+      case WebPage.webPage:
+        return screenOf(screenName: WebPage());
       default:
         return screenOf(screenName: Container());
     }

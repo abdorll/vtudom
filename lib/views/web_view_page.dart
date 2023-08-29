@@ -27,14 +27,15 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/cupertino.dart';
 
 class WebPage extends StatefulWidget {
+  static const  String webPage = "webPage";
   WebPage({
     Key? key,
-    required this.loginType,
+//    required this.loginType,
     this.imageIcon = 'assets/images/individual.png',
   }) : super(key: key);
 
   String? imageIcon;
-  LoginType loginType = LoginType.website;
+  // LoginType loginType = LoginType.website;
 
   @override
   _WebPageState createState() => _WebPageState();

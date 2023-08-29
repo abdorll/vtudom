@@ -209,7 +209,7 @@ class _WebPageState extends State<WebPage> {
       },
     );
 
-    firstTime == true ? setUrl() : () {};
+    firstTime == true ? siteUrl : () {};
     firstTime = false;
 //  webViewController = InAppWebViewController(id, webview)
     _connectivitySubscription =
@@ -300,55 +300,43 @@ class _WebPageState extends State<WebPage> {
     super.initState();
   }
 
-  setUrl() {
-    siteUrl = widget.loginType == LoginType.individual
-        ? 'https://halalvest.co/login'
-        : widget.loginType == LoginType.agent
-            ? 'https://halalvest.co/agent'
-            : widget.loginType == LoginType.merchant
-                ? 'https://halalvest.co/merchant'
-                : widget.loginType == LoginType.staff
-                    ? 'https://halalvest.co/staff'
-                    : widget.loginType == LoginType.aggregator
-                        ? 'https://halalvest.co/aggregator'
-                        : 'https://halalvest.co';
-  }
 
-  Future<void> goForward() async {
-    await webViewController?.goForward();
-  }
 
-  Future<bool?> checkCanGoBack() async {
-    return await webViewController?.canGoBack();
-  }
+  // Future<void> goForward() async {
+  //   await webViewController?.goForward();
+  // }
 
-  Future<bool?> checkCanGoForward() async {
-    return await webViewController?.canGoForward();
-  }
+  // Future<bool?> checkCanGoBack() async {
+  //   return await webViewController?.canGoBack();
+  // }
 
-  bool canGoBack() {
-    checkCanGoBack().then((value) {
-      setState(() {
-        userCanGoBack = value ?? false;
-      });
-      // print('go back $value');
-    });
-    return userCanGoBack;
-  }
+  // Future<bool?> checkCanGoForward() async {
+  //   return await webViewController?.canGoForward();
+  // }
 
-  bool canGoForward() {
-    checkCanGoForward().then((value) {
-      setState(() {
-        userCanGoForward = value ?? false;
-      });
-      // print('can go back $value');
-    });
-    return userCanGoForward;
-  }
+  // bool canGoBack() {
+  //   checkCanGoBack().then((value) {
+  //     setState(() {
+  //       userCanGoBack = value ?? false;
+  //     });
+  //     // print('go back $value');
+  //   });
+  //   return userCanGoBack;
+  // }
 
-  Future<void> goBack() async {
-    await webViewController?.goBack();
-  }
+  // bool canGoForward() {
+  //   checkCanGoForward().then((value) {
+  //     setState(() {
+  //       userCanGoForward = value ?? false;
+  //     });
+  //     // print('can go back $value');
+  //   });
+  //   return userCanGoForward;
+  // }
+
+  // Future<void> goBack() async {
+  //   await webViewController?.goBack();
+  // }
 
   Future loadPage() async {
     Future.delayed(Duration(seconds: 3), () {
@@ -377,205 +365,205 @@ class _WebPageState extends State<WebPage> {
                     child: Column(
                       children: [
                         YMargin(10),
-                        Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Card(
-                                          color: Colors.teal[100],
-                                          shadowColor: Colors.teal[100],
-                                          elevation: 2,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Tooltip(
-                                                    message: 'Previous',
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        print(
-                                                            "can go back: $canGoBack()");
-                                                        if (canGoBack() ==
-                                                            true) {
-                                                          goBack();
-                                                        } else {
-                                                          BotToast.showText(
-                                                            text:
-                                                                "No previous page in stack!",
-                                                            duration: Duration(
-                                                                seconds: 2),
-                                                            contentColor: Colors
-                                                                .black
-                                                                .withOpacity(
-                                                                    .7),
-                                                            textStyle: TextStyle(
-                                                                fontSize: 16.0,
-                                                                color: Colors
-                                                                    .white),
-                                                            align: Alignment
-                                                                .center,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        30),
-                                                            contentPadding:
-                                                                EdgeInsets
-                                                                    .symmetric(
-                                                                        horizontal:
-                                                                            10,
-                                                                        vertical:
-                                                                            15),
-                                                          );
-                                                        }
-                                                      },
-                                                      child: IconOf(
-                                                          Icons
-                                                              .arrow_back_ios_rounded,
-                                                          25,
-                                                          canGoBack() == true
-                                                              ? teal
-                                                              : grey),
-                                                    ),
-                                                  ),
-                                                  XMargin(25),
-                                                  Tooltip(
-                                                    message: 'Forward',
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        print(
-                                                            "can go forward: $canGoForward()");
-                                                        if (canGoForward() ==
-                                                            true) {
-                                                          goForward();
-                                                        } else {
-                                                          BotToast.showText(
-                                                            text:
-                                                                "No next page in stack!",
-                                                            duration: Duration(
-                                                                seconds: 2),
-                                                            contentColor: Colors
-                                                                .black
-                                                                .withOpacity(
-                                                                    .7),
-                                                            textStyle: TextStyle(
-                                                                fontSize: 16.0,
-                                                                color: Colors
-                                                                    .white),
-                                                            align: Alignment
-                                                                .center,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        30),
-                                                            contentPadding:
-                                                                EdgeInsets
-                                                                    .symmetric(
-                                                                        horizontal:
-                                                                            10,
-                                                                        vertical:
-                                                                            15),
-                                                          );
-                                                        }
-                                                      },
-                                                      child: IconOf(
-                                                          Icons
-                                                              .arrow_forward_ios_rounded,
-                                                          25,
-                                                          canGoForward() == true
-                                                              ? teal
-                                                              : grey),
-                                                    ),
-                                                  )
-                                                ]),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Column(children: [
-                                      CircleAvatar(
-                                        radius: 17,
-                                        backgroundColor: teal,
-                                        child: CircleAvatar(
-                                            radius: 16,
-                                            backgroundColor: white,
-                                            child: ImageIcon(
-                                                AssetImage(widget.imageIcon!),
-                                                size: 30)),
-                                      ),
-                                      YMargin(2),
-                                      TextOf(
-                                          widget.loginType ==
-                                                  LoginType.individual
-                                              ? 'INDIVIDUAL'
-                                              : widget.loginType ==
-                                                      LoginType.agent
-                                                  ? 'AGENT'
-                                                  : widget.loginType ==
-                                                          LoginType.merchant
-                                                      ? 'MERCHANT'
-                                                      : widget.loginType ==
-                                                              LoginType.staff
-                                                          ? 'STAFF'
-                                                          : widget.loginType ==
-                                                                  LoginType
-                                                                      .aggregator
-                                                              ? 'AGGREGATOR'
-                                                              : 'OUR WEBSITE',
-                                          12,
-                                          teal,
-                                          FontWeight.w800),
-                                    ]),
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        InkWell(
-                                            onTap: () {
-                                              print("reload------");
-                                              webViewController?.reload();
-                                            },
-                                            child: Tooltip(
-                                              message: 'Refresh',
-                                              child: Card(
-                                                color: Colors.teal[100],
-                                                shadowColor: Colors.teal[100],
-                                                elevation: 2,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            30)),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(5.0),
-                                                  child: IconOf(
-                                                      Icons.refresh, 25, teal),
-                                                ),
-                                              ),
-                                            )),
-                                      ],
-                                    ),
-                                  ),
-                                ])),
+                        // Padding(
+                        //     padding: EdgeInsets.symmetric(horizontal: 15),
+                        //     child: Row(
+                        //         mainAxisAlignment:
+                        //             MainAxisAlignment.spaceBetween,
+                        //         mainAxisSize: MainAxisSize.min,
+                        //         children: [
+                        //           Expanded(
+                        //             flex: 2,
+                        //             child: Row(
+                        //               mainAxisAlignment:
+                        //                   MainAxisAlignment.start,
+                        //               children: [
+                        //                 Card(
+                        //                   color: Colors.teal[100],
+                        //                   shadowColor: Colors.teal[100],
+                        //                   elevation: 2,
+                        //                   shape: RoundedRectangleBorder(
+                        //                       borderRadius:
+                        //                           BorderRadius.circular(30)),
+                        //                   child: Padding(
+                        //                     padding: const EdgeInsets.all(5.0),
+                        //                     child: Row(
+                        //                         mainAxisAlignment:
+                        //                             MainAxisAlignment
+                        //                                 .spaceBetween,
+                        //                         children: [
+                        //                           Tooltip(
+                        //                             message: 'Previous',
+                        //                             child: InkWell(
+                        //                               onTap: () {
+                        //                                 print(
+                        //                                     "can go back: $canGoBack()");
+                        //                                 if (canGoBack() ==
+                        //                                     true) {
+                        //                                   goBack();
+                        //                                 } else {
+                        //                                   BotToast.showText(
+                        //                                     text:
+                        //                                         "No previous page in stack!",
+                        //                                     duration: Duration(
+                        //                                         seconds: 2),
+                        //                                     contentColor: Colors
+                        //                                         .black
+                        //                                         .withOpacity(
+                        //                                             .7),
+                        //                                     textStyle: TextStyle(
+                        //                                         fontSize: 16.0,
+                        //                                         color: Colors
+                        //                                             .white),
+                        //                                     align: Alignment
+                        //                                         .center,
+                        //                                     borderRadius:
+                        //                                         BorderRadius
+                        //                                             .circular(
+                        //                                                 30),
+                        //                                     contentPadding:
+                        //                                         EdgeInsets
+                        //                                             .symmetric(
+                        //                                                 horizontal:
+                        //                                                     10,
+                        //                                                 vertical:
+                        //                                                     15),
+                        //                                   );
+                        //                                 }
+                        //                               },
+                        //                               child: IconOf(
+                        //                                   Icons
+                        //                                       .arrow_back_ios_rounded,
+                        //                                   25,
+                        //                                   canGoBack() == true
+                        //                                       ? teal
+                        //                                       : grey),
+                        //                             ),
+                        //                           ),
+                        //                           XMargin(25),
+                        //                           Tooltip(
+                        //                             message: 'Forward',
+                        //                             child: InkWell(
+                        //                               onTap: () {
+                        //                                 print(
+                        //                                     "can go forward: $canGoForward()");
+                        //                                 if (canGoForward() ==
+                        //                                     true) {
+                        //                                   goForward();
+                        //                                 } else {
+                        //                                   BotToast.showText(
+                        //                                     text:
+                        //                                         "No next page in stack!",
+                        //                                     duration: Duration(
+                        //                                         seconds: 2),
+                        //                                     contentColor: Colors
+                        //                                         .black
+                        //                                         .withOpacity(
+                        //                                             .7),
+                        //                                     textStyle: TextStyle(
+                        //                                         fontSize: 16.0,
+                        //                                         color: Colors
+                        //                                             .white),
+                        //                                     align: Alignment
+                        //                                         .center,
+                        //                                     borderRadius:
+                        //                                         BorderRadius
+                        //                                             .circular(
+                        //                                                 30),
+                        //                                     contentPadding:
+                        //                                         EdgeInsets
+                        //                                             .symmetric(
+                        //                                                 horizontal:
+                        //                                                     10,
+                        //                                                 vertical:
+                        //                                                     15),
+                        //                                   );
+                        //                                 }
+                        //                               },
+                        //                               child: IconOf(
+                        //                                   Icons
+                        //                                       .arrow_forward_ios_rounded,
+                        //                                   25,
+                        //                                   canGoForward() == true
+                        //                                       ? teal
+                        //                                       : grey),
+                        //                             ),
+                        //                           )
+                        //                         ]),
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //           Expanded(
+                        //             flex: 1,
+                        //             child: Column(children: [
+                        //               CircleAvatar(
+                        //                 radius: 17,
+                        //                 backgroundColor: teal,
+                        //                 child: CircleAvatar(
+                        //                     radius: 16,
+                        //                     backgroundColor: white,
+                        //                     child: ImageIcon(
+                        //                         AssetImage(widget.imageIcon!),
+                        //                         size: 30)),
+                        //               ),
+                        //               YMargin(2),
+                        //               TextOf(
+                        //                   widget.loginType ==
+                        //                           LoginType.individual
+                        //                       ? 'INDIVIDUAL'
+                        //                       : widget.loginType ==
+                        //                               LoginType.agent
+                        //                           ? 'AGENT'
+                        //                           : widget.loginType ==
+                        //                                   LoginType.merchant
+                        //                               ? 'MERCHANT'
+                        //                               : widget.loginType ==
+                        //                                       LoginType.staff
+                        //                                   ? 'STAFF'
+                        //                                   : widget.loginType ==
+                        //                                           LoginType
+                        //                                               .aggregator
+                        //                                       ? 'AGGREGATOR'
+                        //                                       : 'OUR WEBSITE',
+                        //                   12,
+                        //                   teal,
+                        //                   FontWeight.w800),
+                        //             ]),
+                        //           ),
+                        //           Expanded(
+                        //             flex: 2,
+                        //             child: Row(
+                        //               mainAxisAlignment: MainAxisAlignment.end,
+                        //               children: [
+                        //                 InkWell(
+                        //                     onTap: () {
+                        //                       print("reload------");
+                        //                       webViewController?.reload();
+                        //                     },
+                        //                     child: Tooltip(
+                        //                       message: 'Refresh',
+                        //                       child: Card(
+                        //                         color: Colors.teal[100],
+                        //                         shadowColor: Colors.teal[100],
+                        //                         elevation: 2,
+                        //                         shape: RoundedRectangleBorder(
+                        //                             borderRadius:
+                        //                                 BorderRadius.circular(
+                        //                                     30)),
+                        //                         child: Padding(
+                        //                           padding:
+                        //                               const EdgeInsets.all(5.0),
+                        //                           child: IconOf(
+                        //                               Icons.refresh, 25, teal),
+                        //                         ),
+                        //                       ),
+                        //                     )),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ])),
                         Divider(color: teal),
                       ],
                     )),

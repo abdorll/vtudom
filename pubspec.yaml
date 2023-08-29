@@ -1,4 +1,4 @@
-name: VTUDOM
+name: vtudom
 description: A new Flutter project.
 
 publish_to: 'none'
@@ -31,9 +31,8 @@ dependencies:
   circle_progress_bar: ^0.1.2
   flutter_inappwebview: ^5.7.2+3
   permission_handler: ^10.4.3
-  google_mobile_ads: ^3.0.0
+  google_mobile_ads:
   flutter_downloader: ^1.3.3
-  flutter_tawk: ^0.1.0
   background_downloader: ^7.9.1
   fl_downloader: ^2.0.0
 

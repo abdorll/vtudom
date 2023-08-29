@@ -9,6 +9,7 @@ import 'package:hive/hive.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:vtudom/routes/app_routes.dart';
 Future main() async{
     WidgetsFlutterBinding.ensureInitialized();
   await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
@@ -47,10 +48,10 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return botToastBuilder(context, child);
       },
+      onGenerateRoute: AppRoutes.generateRoute,
       navigatorObservers: [
         BotToastNavigatorObserver(),
       ],
-      home:Container(),
     );
   }
 }

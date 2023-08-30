@@ -51,7 +51,7 @@ class _ErrorPageState extends State<ErrorPage> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                      Image.asset(Img.network),
+                      Image.asset(ImageOf.network),
                       YMargin(
                         MediaQuery.of(context).size.height * 0.01,
                       ),

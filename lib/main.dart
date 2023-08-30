@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:vtudom/routes/app_routes.dart';
 import 'package:vtudom/utils/color.dart';
 import 'package:vtudom/utils/constants.dart';
+import 'package:vtudom/views/splash_screen.dart';
 import 'package:vtudom/views/web_view_page.dart';
 
 Future<void> main() async {
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return botToastBuilder(context, child);
       },
-      initialRoute: WebPage.webPage,
+      initialRoute: SplashScreen.splashScreen,
       // home: Scaffold(
       //   body: Container(
       //     child: Center(

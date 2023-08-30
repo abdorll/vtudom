@@ -1,9 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:vtudom/function/navigator.dart';
 import 'package:vtudom/routes/app_routes.dart';
 import 'package:vtudom/utils/color.dart';
+import 'package:vtudom/utils/constants.dart';
 import 'package:vtudom/views/web_view_page.dart';
 import 'package:vtudom/widget/custom_elevated_button.dart';
 import 'package:vtudom/widget/texts.dart';
@@ -52,9 +54,7 @@ class _IntroScreenItemState extends State<IntroScreenItem> {
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
           child: Column(
             children: [
-              Expanded(
-                  flex: 3,
-                  child: Image.asset(widget.illustrationPath)),
+              Expanded(flex: 3, child: Image.asset(widget.illustrationPath)),
               Expanded(
                   flex: 2,
                   child: Column(
@@ -66,7 +66,8 @@ class _IntroScreenItemState extends State<IntroScreenItem> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: TextOf(widget.subtitle, 12, black, FontWeight.w400),
+                              child: TextOf(
+                                  widget.subtitle, 12, black, FontWeight.w400),
                             ),
                           ],
                         ),
@@ -114,9 +115,9 @@ class _IntroScreenItemState extends State<IntroScreenItem> {
                           : CustomElevatedButton(
                               text: "Get started",
                               onTap: () {
+                                setRecognizedUser();
                                 Navigation.forever(context,
-                                    screenRoute:
-                                        WebPage.webPage);
+                                    screenRoute: WebPage.webPage);
                               },
                             ),
                     ],
@@ -127,4 +128,9 @@ class _IntroScreenItemState extends State<IntroScreenItem> {
       ),
     );
   }
+}
+
+Future setRecognizedUser() async {
+  var user = await Hive.openBox(Constants.userBox);
+  user.put(Constants.recognizedUser, true);
 }

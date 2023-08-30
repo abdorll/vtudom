@@ -13,6 +13,7 @@ import 'package:path_provider/path_provider.dart';
 // import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:vtudom/views/error_page.dart';
+import 'package:vtudom/views/loading_page.dart';
 import 'package:vtudom/widget/banner_ad.dart';
 import 'package:vtudom/widget/iconss.dart';
 import 'package:vtudom/widget/spacing.dart';
@@ -590,12 +591,11 @@ class _WebPageState extends State<WebPage> {
                             pullToRefreshController: pullToRefreshController,
                             onWebViewCreated:
                                 (InAppWebViewController controller) async {
-                                   
                               webViewController = controller;
                               setState(() {});
                             },
                             onLoadStart: (controller, url) {
-                             _bannerAdMobContainerState.loadAd();
+                              _bannerAdMobContainerState.loadAd();
                               setState(() {
                                 this.url = url.toString();
                                 // downloadUrl = this.url;
@@ -826,45 +826,7 @@ class _WebPageState extends State<WebPage> {
                       //       },
 
                       progress < 1.0
-                          ? Container(
-                              decoration: BoxDecoration(color: white),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SpinKitRotatingPlain(
-                                    size: 50,
-                                    color: primaryColor,
-                                  ),
-                                  YMargin(15),
-                                  Column(children: [
-                                    TextOf(
-                                        'Please wait...(${progress.toInt() * 100}%)',
-                                        15,
-                                        Colors.grey,
-                                        FontWeight.w500),
-                                    YMargin(15),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        LinearPercentIndicator(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
-                                          lineHeight: 5.0,
-                                          animation: true,
-                                          percent: progress,
-                                          backgroundColor: Colors.grey.shade400,
-                                          progressColor: primaryColor,
-                                        ),
-                                      ],
-                                    ),
-                                  ])
-                                ],
-                              ),
-                            )
+                          ? LoadingPage()
                           //   if (downloadProgress > 0 && downloadProgress < 100)
                           // LinearProgressIndicator(
                           //   value: progress / 100,

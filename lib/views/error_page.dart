@@ -19,7 +19,7 @@ class ErrorPage extends StatefulWidget {
 
 class _ErrorPageState extends State<ErrorPage> {
   double _width = 400.0;
-  double _height = 40.0;
+  double _height = 50.0;
   void _tapDown(TapDownDetails details) {
     setState(() {
       _width = 300.0;
@@ -30,14 +30,14 @@ class _ErrorPageState extends State<ErrorPage> {
   void _tapUp(TapUpDetails details) {
     setState(() {
       _width = 400.0;
-      _height = 40.0;
+      _height = 50.0;
     });
   }
 
   void _tapCancel() {
     setState(() {
       _width = 400;
-      _height = 40.0;
+      _height = 50.0;
     });
   }
 
@@ -46,23 +46,23 @@ class _ErrorPageState extends State<ErrorPage> {
     return Scaffold(
         body: SafeArea(
             child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 50),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Center(
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                      Image.asset(ImageOf.network),
+                      Image.asset(ImageOf.network, height: 250,),
                       YMargin(
                         MediaQuery.of(context).size.height * 0.01,
                       ),
-                      TextOf('Something went wrong', 20, black, FontWeight.w800,
+                      TextOf('Something went wrong', 15, black, FontWeight.w600,
                           align: TextAlign.center),
                       YMargin(2),
                       TextOf(
                           'Kindly confirm your internet connection\nis stable and try again.',
-                          15,
+                          13,
                           Colors.grey,
-                          FontWeight.w600,
+                          FontWeight.w500,
                           align: TextAlign.center),
                       YMargin(
                         MediaQuery.of(context).size.height * 0.02,

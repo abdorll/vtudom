@@ -10,4 +10,8 @@ String svgImage(String imageName) {
 class ImageOf {
   static String logo = image('logo');
   static String network = image('network');
+  static String splashScreenImage = image('splash_screen');
+  static String slide1 = image('slide1');
+  static String slide2 = image('slide2');
+  static String slide3 = image('slide3');
 }

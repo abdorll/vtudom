@@ -39,28 +39,28 @@ class _IntroScreensState extends State<IntroScreens> {
         itemIndex: 0,
         currentIndex: currentIndex,
         pageController: _pageController,
-        illustrationPath: ImageOf.logo,
-        title: 'Easy Ride Booking',
+        illustrationPath: ImageOf.slide1,
+        title: 'Welcome to VTUDOM',
         subtitle:
-            'Experience the ease of booking a ride with just a few taps, ensuring a seamless and hassle-free journey.',
+            'Streamline Your Life with Seamless Digital Services Anytime, Anywhere',
       ),
       IntroScreenItem(
         itemIndex: 1,
         currentIndex: currentIndex,
         pageController: _pageController,
-        illustrationPath: ImageOf.logo,
-        title: 'Seamless Payment',
+        illustrationPath: ImageOf.slide2,
+        title: ' Simplify Payments',
         subtitle:
-            'Add funds to your wallet conveniently and use the funds to pay for your ride effortlessly.',
+            'Effortlessly Recharge Airtime, Purchase Data Bundles, and Settle Utility Bills on Demand.',
       ),
       IntroScreenItem(
         itemIndex: 2,
         currentIndex: currentIndex,
         pageController: _pageController,
-        illustrationPath: ImageOf.logo,
-        title: 'Refer and Earn',
+        illustrationPath: ImageOf.slide3,
+        title: 'Empowering Convenience',
         subtitle:
-            'You get a referral bonus when you invite friends to download the app, sign up with your promo code and book a ride.',
+            ' Embrace the Future of Easy Digital Services – Your One-Stop Vending Solution in Nigeria.',
       ),
     ];
     return Scaffold(

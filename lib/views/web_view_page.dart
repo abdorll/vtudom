@@ -26,7 +26,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/cupertino.dart';
 
 class WebPage extends StatefulWidget {
-  static const  String webPage = "webPage";
+  static const String webPage = "webPage";
   WebPage({
     Key? key,
 //    required this.loginType,
@@ -196,7 +196,7 @@ class _WebPageState extends State<WebPage> {
     );
     pullToRefreshController = PullToRefreshController(
       options: PullToRefreshOptions(
-        color: teal,
+        color: primaryColor,
       ),
       onRefresh: () async {
         if (Platform.isAndroid) {
@@ -263,7 +263,7 @@ class _WebPageState extends State<WebPage> {
     //                             SizedBox(
     //                               width: 50,
     //                               child: CircleProgressBar(
-    //                                 foregroundColor: teal,
+    //                                 foregroundColor: primaryColor,
     //                                 backgroundColor: white,
     //                                 value: progress / 100,
     //                                 child: AnimatedCount(
@@ -298,8 +298,6 @@ class _WebPageState extends State<WebPage> {
     //   ..loadRequest(Uri.parse(siteUrl));
     super.initState();
   }
-
-
 
   // Future<void> goForward() async {
   //   await webViewController?.goForward();
@@ -378,8 +376,8 @@ class _WebPageState extends State<WebPage> {
                 //         //                   MainAxisAlignment.start,
                 //         //               children: [
                 //         //                 Card(
-                //         //                   color: Colors.teal[100],
-                //         //                   shadowColor: Colors.teal[100],
+                //         //                   color: Colors.primaryColor[100],
+                //         //                   shadowColor: Colors.primaryColor[100],
                 //         //                   elevation: 2,
                 //         //                   shape: RoundedRectangleBorder(
                 //         //                       borderRadius:
@@ -435,7 +433,7 @@ class _WebPageState extends State<WebPage> {
                 //         //                                       .arrow_back_ios_rounded,
                 //         //                                   25,
                 //         //                                   canGoBack() == true
-                //         //                                       ? teal
+                //         //                                       ? primaryColor
                 //         //                                       : grey),
                 //         //                             ),
                 //         //                           ),
@@ -484,7 +482,7 @@ class _WebPageState extends State<WebPage> {
                 //         //                                       .arrow_forward_ios_rounded,
                 //         //                                   25,
                 //         //                                   canGoForward() == true
-                //         //                                       ? teal
+                //         //                                       ? primaryColor
                 //         //                                       : grey),
                 //         //                             ),
                 //         //                           )
@@ -499,7 +497,7 @@ class _WebPageState extends State<WebPage> {
                 //         //             child: Column(children: [
                 //         //               CircleAvatar(
                 //         //                 radius: 17,
-                //         //                 backgroundColor: teal,
+                //         //                 backgroundColor: primaryColor,
                 //         //                 child: CircleAvatar(
                 //         //                     radius: 16,
                 //         //                     backgroundColor: white,
@@ -527,7 +525,7 @@ class _WebPageState extends State<WebPage> {
                 //         //                                       ? 'AGGREGATOR'
                 //         //                                       : 'OUR WEBSITE',
                 //         //                   12,
-                //         //                   teal,
+                //         //                   primaryColor,
                 //         //                   FontWeight.w800),
                 //         //             ]),
                 //         //           ),
@@ -544,8 +542,8 @@ class _WebPageState extends State<WebPage> {
                 //         //                     child: Tooltip(
                 //         //                       message: 'Refresh',
                 //         //                       child: Card(
-                //         //                         color: Colors.teal[100],
-                //         //                         shadowColor: Colors.teal[100],
+                //         //                         color: Colors.primaryColor[100],
+                //         //                         shadowColor: Colors.primaryColor[100],
                 //         //                         elevation: 2,
                 //         //                         shape: RoundedRectangleBorder(
                 //         //                             borderRadius:
@@ -555,7 +553,7 @@ class _WebPageState extends State<WebPage> {
                 //         //                           padding:
                 //         //                               const EdgeInsets.all(5.0),
                 //         //                           child: IconOf(
-                //         //                               Icons.refresh, 25, teal),
+                //         //                               Icons.refresh, 25, primaryColor),
                 //         //                         ),
                 //         //                       ),
                 //         //                     )),
@@ -563,7 +561,7 @@ class _WebPageState extends State<WebPage> {
                 //         //             ),
                 //         //           ),
                 //         //         ])),
-                //         Divider(color: teal),
+                //         Divider(color: primaryColor),
                 //       ],
                 //     )),
                 Expanded(
@@ -573,7 +571,7 @@ class _WebPageState extends State<WebPage> {
                       if (downloadProgress > 0 && downloadProgress < 100)
                         LinearProgressIndicator(
                           value: downloadProgress / 100,
-                          color: teal,
+                          color: primaryColor,
                         ),
                       InAppWebView(
                         key: webViewKey,
@@ -807,7 +805,7 @@ class _WebPageState extends State<WebPage> {
                       //       } else {
                       //         return Center(
                       //             child: CupertinoActivityIndicator(
-                      //           color: teal,
+                      //           color: primaryColor,
                       //           animating: true,
                       //           radius: 30,
                       //         ));
@@ -822,7 +820,7 @@ class _WebPageState extends State<WebPage> {
                                 children: [
                                   SpinKitRotatingPlain(
                                     size: 50,
-                                    color: teal,
+                                    color: primaryColor,
                                   ),
                                   YMargin(15),
                                   Column(children: [
@@ -845,7 +843,7 @@ class _WebPageState extends State<WebPage> {
                                           animation: true,
                                           percent: progress,
                                           backgroundColor: Colors.grey.shade400,
-                                          progressColor: teal,
+                                          progressColor: primaryColor,
                                         ),
                                       ],
                                     ),

@@ -8,6 +8,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:vtudom/routes/app_routes.dart';
+import 'package:vtudom/utils/color.dart';
+import 'package:vtudom/utils/constants.dart';
 import 'package:vtudom/views/web_view_page.dart';
 
 Future<void> main() async {
@@ -20,11 +22,11 @@ Future<void> main() async {
     await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
   Hive.init(path.path);
-  await Hive.openBox("");
+  await Hive.openBox(userBox);
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarColor: Colors.blue,
+      statusBarColor:primaryColor,
     ),
   );
   runApp(const MyApp());

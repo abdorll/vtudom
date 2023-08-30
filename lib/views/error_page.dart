@@ -81,7 +81,7 @@ class _ErrorPageState extends State<ErrorPage> {
                           height: _height,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: teal,
+                            color: primaryColor,
                           ),
                           child: Center(
                             child: TextOf('Reload', 15, white, FontWeight.w500),

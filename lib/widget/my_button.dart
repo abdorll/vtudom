@@ -33,7 +33,7 @@ SizedBox btn(String text, bool enabled) {
     child: Container(
       width: double.infinity,
       decoration: BoxDecoration(
-          color: enabled == true ? teal : teal.withOpacity(0.4),
+          color: enabled == true ? primaryColor : primaryColor.withOpacity(0.4),
           borderRadius: BorderRadius.circular(10)),
       child: Center(child: TextOf(text, 16, white, FontWeight.w500)),
     ),

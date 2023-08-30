@@ -33,14 +33,14 @@ class Inputfield extends ConsumerWidget {
         const YMargin(5),
         TextFormField(
           onChanged: onChanged,
-          cursorColor: teal,
+          cursorColor: primaryColor,
           keyboardType: inputType,
           //keyboardAppearance: ,
           style: GoogleFonts.mulish(),
           decoration: InputDecoration(
               prefixIcon: IconOf(icon, size4, ash),
               focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(width: 1, color: teal),
+                  borderSide: BorderSide(width: 1, color: primaryColor),
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               border: OutlineInputBorder(
                   borderSide: BorderSide(width: 0, color: red),
@@ -74,7 +74,7 @@ class PasswordField extends ConsumerWidget {
         const YMargin(5),
         TextFormField(
           onChanged: onChanged,
-          cursorColor: teal,
+          cursorColor: primaryColor,
           obscureText: ref.watch(inVisible),
           style: GoogleFonts.mulish(),
           decoration: InputDecoration(
@@ -90,13 +90,13 @@ class PasswordField extends ConsumerWidget {
                           ref.watch(inVisible) == false ? 'Hide' : 'Show',
                           size2,
                           ref.watch(inVisible) == false
-                              ? teal
+                              ? primaryColor
                               : red.withOpacity(0.5),
                           FontWeight.bold),
                     ],
                   )),
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 1, color: teal),
+                  borderSide: BorderSide(width: 1, color: primaryColor),
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               border: OutlineInputBorder(
                   borderSide: BorderSide(width: 0, color: red),

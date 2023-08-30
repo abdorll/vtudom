@@ -1,4 +1,4 @@
-package com.example.vtudom
+package com.vtuapp.vtudom
 
 import io.flutter.embedding.android.FlutterActivity
 

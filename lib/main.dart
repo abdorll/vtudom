@@ -1,5 +1,3 @@
- 
-
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,8 +8,10 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:vtudom/routes/app_routes.dart';
-Future main() async{
-    WidgetsFlutterBinding.ensureInitialized();
+import 'package:vtudom/views/web_view_page.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
   await Permission.notification.request();
   await Permission.storage.request();
@@ -36,18 +36,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-     final botToastBuilder = BotToastInit();
+    final botToastBuilder = BotToastInit();
     return MaterialApp(
       title: 'VTUDOM',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      
+
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return botToastBuilder(context, child);
       },
+      initialRoute: WebPage.webPage,
+      // home: Scaffold(
+      //   body: Container(
+      //     child: Center(
+      //       child: Text("data"),
+      //     ),
+      //   ),
+      // ),
       onGenerateRoute: AppRoutes.generateRoute,
       navigatorObservers: [
         BotToastNavigatorObserver(),
@@ -55,7 +63,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});

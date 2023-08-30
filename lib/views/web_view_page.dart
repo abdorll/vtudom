@@ -17,7 +17,6 @@ import 'package:vtudom/widget/iconss.dart';
 import 'package:vtudom/widget/spacing.dart';
 // import 'package:webview_flutter/webview_flutter.dart';
 import 'package:vtudom/utils/color.dart';
-import 'package:vtudom/utils/login_types.dart';
 import 'package:vtudom/widget/texts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -35,7 +34,6 @@ class WebPage extends StatefulWidget {
   }) : super(key: key);
 
   String? imageIcon;
-  // LoginType loginType = LoginType.website;
 
   @override
   _WebPageState createState() => _WebPageState();
@@ -361,213 +359,213 @@ class _WebPageState extends State<WebPage> {
             backgroundColor: Colors.white,
             body: SafeArea(
               child: Column(children: [
-                Container(
-                    width: double.infinity,
-                    child: Column(
-                      children: [
-                        YMargin(10),
-                        // Padding(
-                        //     padding: EdgeInsets.symmetric(horizontal: 15),
-                        //     child: Row(
-                        //         mainAxisAlignment:
-                        //             MainAxisAlignment.spaceBetween,
-                        //         mainAxisSize: MainAxisSize.min,
-                        //         children: [
-                        //           Expanded(
-                        //             flex: 2,
-                        //             child: Row(
-                        //               mainAxisAlignment:
-                        //                   MainAxisAlignment.start,
-                        //               children: [
-                        //                 Card(
-                        //                   color: Colors.teal[100],
-                        //                   shadowColor: Colors.teal[100],
-                        //                   elevation: 2,
-                        //                   shape: RoundedRectangleBorder(
-                        //                       borderRadius:
-                        //                           BorderRadius.circular(30)),
-                        //                   child: Padding(
-                        //                     padding: const EdgeInsets.all(5.0),
-                        //                     child: Row(
-                        //                         mainAxisAlignment:
-                        //                             MainAxisAlignment
-                        //                                 .spaceBetween,
-                        //                         children: [
-                        //                           Tooltip(
-                        //                             message: 'Previous',
-                        //                             child: InkWell(
-                        //                               onTap: () {
-                        //                                 print(
-                        //                                     "can go back: $canGoBack()");
-                        //                                 if (canGoBack() ==
-                        //                                     true) {
-                        //                                   goBack();
-                        //                                 } else {
-                        //                                   BotToast.showText(
-                        //                                     text:
-                        //                                         "No previous page in stack!",
-                        //                                     duration: Duration(
-                        //                                         seconds: 2),
-                        //                                     contentColor: Colors
-                        //                                         .black
-                        //                                         .withOpacity(
-                        //                                             .7),
-                        //                                     textStyle: TextStyle(
-                        //                                         fontSize: 16.0,
-                        //                                         color: Colors
-                        //                                             .white),
-                        //                                     align: Alignment
-                        //                                         .center,
-                        //                                     borderRadius:
-                        //                                         BorderRadius
-                        //                                             .circular(
-                        //                                                 30),
-                        //                                     contentPadding:
-                        //                                         EdgeInsets
-                        //                                             .symmetric(
-                        //                                                 horizontal:
-                        //                                                     10,
-                        //                                                 vertical:
-                        //                                                     15),
-                        //                                   );
-                        //                                 }
-                        //                               },
-                        //                               child: IconOf(
-                        //                                   Icons
-                        //                                       .arrow_back_ios_rounded,
-                        //                                   25,
-                        //                                   canGoBack() == true
-                        //                                       ? teal
-                        //                                       : grey),
-                        //                             ),
-                        //                           ),
-                        //                           XMargin(25),
-                        //                           Tooltip(
-                        //                             message: 'Forward',
-                        //                             child: InkWell(
-                        //                               onTap: () {
-                        //                                 print(
-                        //                                     "can go forward: $canGoForward()");
-                        //                                 if (canGoForward() ==
-                        //                                     true) {
-                        //                                   goForward();
-                        //                                 } else {
-                        //                                   BotToast.showText(
-                        //                                     text:
-                        //                                         "No next page in stack!",
-                        //                                     duration: Duration(
-                        //                                         seconds: 2),
-                        //                                     contentColor: Colors
-                        //                                         .black
-                        //                                         .withOpacity(
-                        //                                             .7),
-                        //                                     textStyle: TextStyle(
-                        //                                         fontSize: 16.0,
-                        //                                         color: Colors
-                        //                                             .white),
-                        //                                     align: Alignment
-                        //                                         .center,
-                        //                                     borderRadius:
-                        //                                         BorderRadius
-                        //                                             .circular(
-                        //                                                 30),
-                        //                                     contentPadding:
-                        //                                         EdgeInsets
-                        //                                             .symmetric(
-                        //                                                 horizontal:
-                        //                                                     10,
-                        //                                                 vertical:
-                        //                                                     15),
-                        //                                   );
-                        //                                 }
-                        //                               },
-                        //                               child: IconOf(
-                        //                                   Icons
-                        //                                       .arrow_forward_ios_rounded,
-                        //                                   25,
-                        //                                   canGoForward() == true
-                        //                                       ? teal
-                        //                                       : grey),
-                        //                             ),
-                        //                           )
-                        //                         ]),
-                        //                   ),
-                        //                 ),
-                        //               ],
-                        //             ),
-                        //           ),
-                        //           Expanded(
-                        //             flex: 1,
-                        //             child: Column(children: [
-                        //               CircleAvatar(
-                        //                 radius: 17,
-                        //                 backgroundColor: teal,
-                        //                 child: CircleAvatar(
-                        //                     radius: 16,
-                        //                     backgroundColor: white,
-                        //                     child: ImageIcon(
-                        //                         AssetImage(widget.imageIcon!),
-                        //                         size: 30)),
-                        //               ),
-                        //               YMargin(2),
-                        //               TextOf(
-                        //                   widget.loginType ==
-                        //                           LoginType.individual
-                        //                       ? 'INDIVIDUAL'
-                        //                       : widget.loginType ==
-                        //                               LoginType.agent
-                        //                           ? 'AGENT'
-                        //                           : widget.loginType ==
-                        //                                   LoginType.merchant
-                        //                               ? 'MERCHANT'
-                        //                               : widget.loginType ==
-                        //                                       LoginType.staff
-                        //                                   ? 'STAFF'
-                        //                                   : widget.loginType ==
-                        //                                           LoginType
-                        //                                               .aggregator
-                        //                                       ? 'AGGREGATOR'
-                        //                                       : 'OUR WEBSITE',
-                        //                   12,
-                        //                   teal,
-                        //                   FontWeight.w800),
-                        //             ]),
-                        //           ),
-                        //           Expanded(
-                        //             flex: 2,
-                        //             child: Row(
-                        //               mainAxisAlignment: MainAxisAlignment.end,
-                        //               children: [
-                        //                 InkWell(
-                        //                     onTap: () {
-                        //                       print("reload------");
-                        //                       webViewController?.reload();
-                        //                     },
-                        //                     child: Tooltip(
-                        //                       message: 'Refresh',
-                        //                       child: Card(
-                        //                         color: Colors.teal[100],
-                        //                         shadowColor: Colors.teal[100],
-                        //                         elevation: 2,
-                        //                         shape: RoundedRectangleBorder(
-                        //                             borderRadius:
-                        //                                 BorderRadius.circular(
-                        //                                     30)),
-                        //                         child: Padding(
-                        //                           padding:
-                        //                               const EdgeInsets.all(5.0),
-                        //                           child: IconOf(
-                        //                               Icons.refresh, 25, teal),
-                        //                         ),
-                        //                       ),
-                        //                     )),
-                        //               ],
-                        //             ),
-                        //           ),
-                        //         ])),
-                        Divider(color: teal),
-                      ],
-                    )),
+                // Container(
+                //     width: double.infinity,
+                //     child: Column(
+                //       children: [
+                //         YMargin(10),
+                //         // Padding(
+                //         //     padding: EdgeInsets.symmetric(horizontal: 15),
+                //         //     child: Row(
+                //         //         mainAxisAlignment:
+                //         //             MainAxisAlignment.spaceBetween,
+                //         //         mainAxisSize: MainAxisSize.min,
+                //         //         children: [
+                //         //           Expanded(
+                //         //             flex: 2,
+                //         //             child: Row(
+                //         //               mainAxisAlignment:
+                //         //                   MainAxisAlignment.start,
+                //         //               children: [
+                //         //                 Card(
+                //         //                   color: Colors.teal[100],
+                //         //                   shadowColor: Colors.teal[100],
+                //         //                   elevation: 2,
+                //         //                   shape: RoundedRectangleBorder(
+                //         //                       borderRadius:
+                //         //                           BorderRadius.circular(30)),
+                //         //                   child: Padding(
+                //         //                     padding: const EdgeInsets.all(5.0),
+                //         //                     child: Row(
+                //         //                         mainAxisAlignment:
+                //         //                             MainAxisAlignment
+                //         //                                 .spaceBetween,
+                //         //                         children: [
+                //         //                           Tooltip(
+                //         //                             message: 'Previous',
+                //         //                             child: InkWell(
+                //         //                               onTap: () {
+                //         //                                 print(
+                //         //                                     "can go back: $canGoBack()");
+                //         //                                 if (canGoBack() ==
+                //         //                                     true) {
+                //         //                                   goBack();
+                //         //                                 } else {
+                //         //                                   BotToast.showText(
+                //         //                                     text:
+                //         //                                         "No previous page in stack!",
+                //         //                                     duration: Duration(
+                //         //                                         seconds: 2),
+                //         //                                     contentColor: Colors
+                //         //                                         .black
+                //         //                                         .withOpacity(
+                //         //                                             .7),
+                //         //                                     textStyle: TextStyle(
+                //         //                                         fontSize: 16.0,
+                //         //                                         color: Colors
+                //         //                                             .white),
+                //         //                                     align: Alignment
+                //         //                                         .center,
+                //         //                                     borderRadius:
+                //         //                                         BorderRadius
+                //         //                                             .circular(
+                //         //                                                 30),
+                //         //                                     contentPadding:
+                //         //                                         EdgeInsets
+                //         //                                             .symmetric(
+                //         //                                                 horizontal:
+                //         //                                                     10,
+                //         //                                                 vertical:
+                //         //                                                     15),
+                //         //                                   );
+                //         //                                 }
+                //         //                               },
+                //         //                               child: IconOf(
+                //         //                                   Icons
+                //         //                                       .arrow_back_ios_rounded,
+                //         //                                   25,
+                //         //                                   canGoBack() == true
+                //         //                                       ? teal
+                //         //                                       : grey),
+                //         //                             ),
+                //         //                           ),
+                //         //                           XMargin(25),
+                //         //                           Tooltip(
+                //         //                             message: 'Forward',
+                //         //                             child: InkWell(
+                //         //                               onTap: () {
+                //         //                                 print(
+                //         //                                     "can go forward: $canGoForward()");
+                //         //                                 if (canGoForward() ==
+                //         //                                     true) {
+                //         //                                   goForward();
+                //         //                                 } else {
+                //         //                                   BotToast.showText(
+                //         //                                     text:
+                //         //                                         "No next page in stack!",
+                //         //                                     duration: Duration(
+                //         //                                         seconds: 2),
+                //         //                                     contentColor: Colors
+                //         //                                         .black
+                //         //                                         .withOpacity(
+                //         //                                             .7),
+                //         //                                     textStyle: TextStyle(
+                //         //                                         fontSize: 16.0,
+                //         //                                         color: Colors
+                //         //                                             .white),
+                //         //                                     align: Alignment
+                //         //                                         .center,
+                //         //                                     borderRadius:
+                //         //                                         BorderRadius
+                //         //                                             .circular(
+                //         //                                                 30),
+                //         //                                     contentPadding:
+                //         //                                         EdgeInsets
+                //         //                                             .symmetric(
+                //         //                                                 horizontal:
+                //         //                                                     10,
+                //         //                                                 vertical:
+                //         //                                                     15),
+                //         //                                   );
+                //         //                                 }
+                //         //                               },
+                //         //                               child: IconOf(
+                //         //                                   Icons
+                //         //                                       .arrow_forward_ios_rounded,
+                //         //                                   25,
+                //         //                                   canGoForward() == true
+                //         //                                       ? teal
+                //         //                                       : grey),
+                //         //                             ),
+                //         //                           )
+                //         //                         ]),
+                //         //                   ),
+                //         //                 ),
+                //         //               ],
+                //         //             ),
+                //         //           ),
+                //         //           Expanded(
+                //         //             flex: 1,
+                //         //             child: Column(children: [
+                //         //               CircleAvatar(
+                //         //                 radius: 17,
+                //         //                 backgroundColor: teal,
+                //         //                 child: CircleAvatar(
+                //         //                     radius: 16,
+                //         //                     backgroundColor: white,
+                //         //                     child: ImageIcon(
+                //         //                         AssetImage(widget.imageIcon!),
+                //         //                         size: 30)),
+                //         //               ),
+                //         //               YMargin(2),
+                //         //               TextOf(
+                //         //                   widget.loginType ==
+                //         //                           LoginType.individual
+                //         //                       ? 'INDIVIDUAL'
+                //         //                       : widget.loginType ==
+                //         //                               LoginType.agent
+                //         //                           ? 'AGENT'
+                //         //                           : widget.loginType ==
+                //         //                                   LoginType.merchant
+                //         //                               ? 'MERCHANT'
+                //         //                               : widget.loginType ==
+                //         //                                       LoginType.staff
+                //         //                                   ? 'STAFF'
+                //         //                                   : widget.loginType ==
+                //         //                                           LoginType
+                //         //                                               .aggregator
+                //         //                                       ? 'AGGREGATOR'
+                //         //                                       : 'OUR WEBSITE',
+                //         //                   12,
+                //         //                   teal,
+                //         //                   FontWeight.w800),
+                //         //             ]),
+                //         //           ),
+                //         //           Expanded(
+                //         //             flex: 2,
+                //         //             child: Row(
+                //         //               mainAxisAlignment: MainAxisAlignment.end,
+                //         //               children: [
+                //         //                 InkWell(
+                //         //                     onTap: () {
+                //         //                       print("reload------");
+                //         //                       webViewController?.reload();
+                //         //                     },
+                //         //                     child: Tooltip(
+                //         //                       message: 'Refresh',
+                //         //                       child: Card(
+                //         //                         color: Colors.teal[100],
+                //         //                         shadowColor: Colors.teal[100],
+                //         //                         elevation: 2,
+                //         //                         shape: RoundedRectangleBorder(
+                //         //                             borderRadius:
+                //         //                                 BorderRadius.circular(
+                //         //                                     30)),
+                //         //                         child: Padding(
+                //         //                           padding:
+                //         //                               const EdgeInsets.all(5.0),
+                //         //                           child: IconOf(
+                //         //                               Icons.refresh, 25, teal),
+                //         //                         ),
+                //         //                       ),
+                //         //                     )),
+                //         //               ],
+                //         //             ),
+                //         //           ),
+                //         //         ])),
+                //         Divider(color: teal),
+                //       ],
+                //     )),
                 Expanded(
                   child: Stack(
                     alignment: Alignment.center,

@@ -22,11 +22,11 @@ Future<void> main() async {
     await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
   Hive.init(path.path);
-  await Hive.openBox(userBox);
+  await Hive.openBox(Constants.userBox);
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarColor:primaryColor,
+      statusBarColor: primaryColor,
     ),
   );
   runApp(const MyApp());

@@ -13,6 +13,7 @@ import 'package:path_provider/path_provider.dart';
 // import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:vtudom/views/error_page.dart';
+import 'package:vtudom/widget/banner_ad.dart';
 import 'package:vtudom/widget/iconss.dart';
 import 'package:vtudom/widget/spacing.dart';
 // import 'package:webview_flutter/webview_flutter.dart';
@@ -349,6 +350,8 @@ class _WebPageState extends State<WebPage> {
     });
   }
 
+  BannerAdMobContainerState _bannerAdMobContainerState =
+      BannerAdMobContainerState();
   @override
   Widget build(BuildContext context) {
     return (_connectionResult == ConnectivityResult.mobile ||
@@ -573,126 +576,137 @@ class _WebPageState extends State<WebPage> {
                           value: downloadProgress / 100,
                           color: primaryColor,
                         ),
-                      InAppWebView(
-                        key: webViewKey,
-                        initialUrlRequest: URLRequest(url: Uri.parse(siteUrl)),
-                        initialOptions: options,
-                        initialUserScripts:
-                            UnmodifiableListView<UserScript>([]),
-                        contextMenu: contextMenu,
-                        pullToRefreshController: pullToRefreshController,
-                        onWebViewCreated:
-                            (InAppWebViewController controller) async {
-                          webViewController = controller;
-                          setState(() {});
-                        },
-                        onLoadStart: (controller, url) {
-                          setState(() {
-                            this.url = url.toString();
-                            // downloadUrl = this.url;
-                          });
-                        },
-                        androidOnPermissionRequest:
-                            (controller, origin, resources) async {
-                          return PermissionRequestResponse(
-                              resources: resources,
-                              action: PermissionRequestResponseAction.GRANT);
-                        },
-                        shouldOverrideUrlLoading:
-                            (controller, navigationAction) async {
-                          var uri = navigationAction.request.url!;
+                      Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          InAppWebView(
+                            key: webViewKey,
+                            initialUrlRequest:
+                                URLRequest(url: Uri.parse(siteUrl)),
+                            initialOptions: options,
+                            initialUserScripts:
+                                UnmodifiableListView<UserScript>([]),
+                            contextMenu: contextMenu,
+                            pullToRefreshController: pullToRefreshController,
+                            onWebViewCreated:
+                                (InAppWebViewController controller) async {
+                                   
+                              webViewController = controller;
+                              setState(() {});
+                            },
+                            onLoadStart: (controller, url) {
+                             _bannerAdMobContainerState.loadAd();
+                              setState(() {
+                                this.url = url.toString();
+                                // downloadUrl = this.url;
+                              });
+                            },
+                            androidOnPermissionRequest:
+                                (controller, origin, resources) async {
+                              return PermissionRequestResponse(
+                                  resources: resources,
+                                  action:
+                                      PermissionRequestResponseAction.GRANT);
+                            },
+                            shouldOverrideUrlLoading:
+                                (controller, navigationAction) async {
+                              var uri = navigationAction.request.url!;
 
-                          if (![
-                            "http",
-                            "https",
-                            "file",
-                            "chrome",
-                            "data",
-                            "javascript",
-                            "about"
-                          ].contains(uri.scheme)) {
-                            // ignore: deprecated_member_use
-                            if (await canLaunch(url)) {
-                              // Launch the App
-                              // ignore: deprecated_member_use
-                              await launch(
-                                url,
-                              );
-                              // and cancel the request
-                              return NavigationActionPolicy.CANCEL;
-                            }
-                          }
+                              if (![
+                                "http",
+                                "https",
+                                "file",
+                                "chrome",
+                                "data",
+                                "javascript",
+                                "about"
+                              ].contains(uri.scheme)) {
+                                // ignore: deprecated_member_use
+                                if (await canLaunch(url)) {
+                                  // Launch the App
+                                  // ignore: deprecated_member_use
+                                  await launch(
+                                    url,
+                                  );
+                                  // and cancel the request
+                                  return NavigationActionPolicy.CANCEL;
+                                }
+                              }
 
-                          return NavigationActionPolicy.ALLOW;
-                        },
-                        onLoadStop: (controller, url) async {
-                          pullToRefreshController.endRefreshing();
-                          setState(() {
-                            this.url = url.toString();
-                            // downloadUrl = this.url;
-                          });
-                        },
-                        onLoadError: (controller, url, code, message) {
-                          pullToRefreshController.endRefreshing();
-                          setState(() {
-                            progress = 0.0;
-                          });
-                        },
-                        onProgressChanged: (controller, progress) {
-                          if (progress == 1.0) {
-                            pullToRefreshController.endRefreshing();
-                          }
-                          setState(() {
-                            this.progress = progress.toDouble();
-                            // downloadUrl = this.url;
-                          });
-                        },
-                        onDownloadStartRequest:
-                            (InAppWebViewController controller,
-                                DownloadStartRequest url) async {
-                          setState(() {
-                            downloadUrl = url.url.toString();
-                          });
-                          print("downloader tapper: url>>>> $downloadUrl");
-                          final permission =
-                              await FlDownloader.requestPermission();
-                          if (permission == StoragePermissionStatus.granted) {
-                            await FlDownloader.download(
-                              downloadUrl,
-                              fileName: url.suggestedFilename!
-                                  .replaceAll("html", "")
-                                  .replaceAll("_", " "),
-                            );
-                          } else {
-                            debugPrint('Permission denied =(');
-                          }
+                              return NavigationActionPolicy.ALLOW;
+                            },
+                            onLoadStop: (controller, url) async {
+                              pullToRefreshController.endRefreshing();
+                              setState(() {
+                                this.url = url.toString();
+                                // downloadUrl = this.url;
+                              });
+                            },
+                            onLoadError: (controller, url, code, message) {
+                              pullToRefreshController.endRefreshing();
+                              setState(() {
+                                progress = 0.0;
+                              });
+                            },
+                            onProgressChanged: (controller, progress) {
+                              if (progress == 1.0) {
+                                pullToRefreshController.endRefreshing();
+                              }
+                              setState(() {
+                                this.progress = progress.toDouble();
+                                // downloadUrl = this.url;
+                              });
+                            },
+                            onDownloadStartRequest:
+                                (InAppWebViewController controller,
+                                    DownloadStartRequest url) async {
+                              setState(() {
+                                downloadUrl = url.url.toString();
+                              });
+                              print("downloader tapper: url>>>> $downloadUrl");
+                              final permission =
+                                  await FlDownloader.requestPermission();
+                              if (permission ==
+                                  StoragePermissionStatus.granted) {
+                                await FlDownloader.download(
+                                  downloadUrl,
+                                  fileName: url.suggestedFilename!
+                                      .replaceAll("html", "")
+                                      .replaceAll("_", " "),
+                                );
+                              } else {
+                                debugPrint('Permission denied =(');
+                              }
 
-                          // Directory? tempDir =
-                          //     await getExternalStorageDirectory();
-                          // setState(() {});
-                          // print(
-                          //     "progress: $progress\n onDownload ${url.url.toString()}\n ${tempDir!.path}");
-                          // await FlutterDownloader.enqueue(
-                          //   url: url.url.toString(),
-                          //   fileName: url.suggestedFilename!
-                          //       .replaceAll("_", " "), //File Name
-                          //   savedDir: tempDir.path,
-                          //   showNotification: true,
-                          //   requiresStorageNotLow: false,
-                          //   openFileFromNotification: true,
-                          //   saveInPublicStorage: true,
-                          // );
-                        },
-                        onUpdateVisitedHistory:
-                            (controller, url, androidIsReload) {
-                          setState(() {
-                            this.url = url.toString();
-                            // urlController.text = this.url;
-                          });
-                        },
-                        onConsoleMessage: (controller, consoleMessage) {
-                          print(consoleMessage);
-                        },
+                              // Directory? tempDir =
+                              //     await getExternalStorageDirectory();
+                              // setState(() {});
+                              // print(
+                              //     "progress: $progress\n onDownload ${url.url.toString()}\n ${tempDir!.path}");
+                              // await FlutterDownloader.enqueue(
+                              //   url: url.url.toString(),
+                              //   fileName: url.suggestedFilename!
+                              //       .replaceAll("_", " "), //File Name
+                              //   savedDir: tempDir.path,
+                              //   showNotification: true,
+                              //   requiresStorageNotLow: false,
+                              //   openFileFromNotification: true,
+                              //   saveInPublicStorage: true,
+                              // );
+                            },
+                            onUpdateVisitedHistory:
+                                (controller, url, androidIsReload) {
+                              setState(() {
+                                this.url = url.toString();
+                                // urlController.text = this.url;
+                              });
+                            },
+                            onConsoleMessage: (controller, consoleMessage) {
+                              print(consoleMessage);
+                            },
+                          ),
+                          BannerAdMobContainer()
+                        ],
                       ),
                       // if (webViewController != null) {
                       //         return InAppWebView(

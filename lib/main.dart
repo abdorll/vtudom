@@ -11,7 +11,6 @@ import 'package:vtudom/routes/app_routes.dart';
 import 'package:vtudom/utils/color.dart';
 import 'package:vtudom/utils/constants.dart';
 import 'package:vtudom/views/splash_screen.dart';
-import 'package:vtudom/views/web_view_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,8 +34,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final botToastBuilder = BotToastInit();
@@ -52,31 +49,10 @@ class MyApp extends StatelessWidget {
         return botToastBuilder(context, child);
       },
       initialRoute: SplashScreen.splashScreen,
-      // home: Scaffold(
-      //   body: Container(
-      //     child: Center(
-      //       child: Text("data"),
-      //     ),
-      //   ),
-      // ),
       onGenerateRoute: AppRoutes.generateRoute,
       navigatorObservers: [
         BotToastNavigatorObserver(),
       ],
     );
-  }
-}
-
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

@@ -5,13 +5,14 @@ import 'package:vtudom/utils/color.dart';
 import 'package:vtudom/utils/images.dart';
 import 'package:vtudom/widget/texts.dart';
 
+@immutable
 class ErrorPage extends StatefulWidget {
   ErrorPage({
     Key? key,
     required this.controller,
   }) : super(key: key);
 
-  InAppWebViewController? controller;
+  final InAppWebViewController? controller;
 
   @override
   _ErrorPageState createState() => _ErrorPageState();

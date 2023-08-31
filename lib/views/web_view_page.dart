@@ -64,7 +64,7 @@ class _WebPageState extends State<WebPage> {
   bool pageIsLoaded = false;
   double progress = 0;
   late PullToRefreshController pullToRefreshController;
-  String siteUrl = 'https://vtudom.com.ng';
+  String siteUrl = 'https://app.vtudom.com.ng/';
   String url = "";
   // final urlController = TextEditingController(
   //   text:
